@@ -12,7 +12,7 @@ public class App {
      */
     public static void main(String[] args) throws Exception {
         // Instantiate the calculator
-        TeaPriceCalculator calculator = new TeaPriceCalculator();
+        TeaPriceLibCalculator calculator = new TeaPriceLibCalculator();
 
         if (args.length == 1) { // a file name has been specified
             // Nobody uses this code yet
