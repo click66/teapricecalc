@@ -18,12 +18,18 @@ public class TeaPriceCalculator implements Calculator
     @Override
     public double calculate(int numberOfTeaBags, int typeOfTea, int qualityOfTea, int shapeOfBag, int sizeOfBag)
     {
-        return this.calculator.calculate(
+        double result = this.calculator.calculate(
                 numberOfTeaBags,
                 typeOfTea,
                 qualityOfTea,
                 shapeOfBag,
                 sizeOfBag
         );
+
+        if (numberOfTeaBags > 8000000 && result > 100000) {
+            result = result * 0.985;
+        }
+
+        return result;
     }
 }
