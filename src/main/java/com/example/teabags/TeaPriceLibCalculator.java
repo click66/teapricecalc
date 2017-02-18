@@ -3,7 +3,7 @@ package com.example.teabags;
 /**
  * Tea bag price calculator class
  */
-public class TeaPriceLibCalculator
+public class TeaPriceLibCalculator implements Calculator
 {
     /**
      * Calculate the price of tea bags from the passed parameters
