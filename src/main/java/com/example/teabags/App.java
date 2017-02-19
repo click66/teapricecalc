@@ -9,7 +9,6 @@ public class App {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-
         // Instantiate the calculator
         TeaPriceCalculator calculator = new TeaPriceCalculator(new TeaPriceLibCalculator());
         // Instantiate the reader factory
