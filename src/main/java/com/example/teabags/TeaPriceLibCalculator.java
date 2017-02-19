@@ -7,15 +7,17 @@ public class TeaPriceLibCalculator implements Calculator
 {
     /**
      * Calculate the price of tea bags from the passed parameters
-     * @param numberOfTeaBags
-     * @param typeOfTea
-     * @param qualityOfTea
-     * @param shapeOfBag
-     * @param sizeOfBag
+     * @param orderSpecification
      * @return
      */
-    public double calculate(int numberOfTeaBags, int typeOfTea, int qualityOfTea, int shapeOfBag, int sizeOfBag)
+    public double calculate(OrderSpecification orderSpecification)
     {
+        int numberOfTeaBags = orderSpecification.getNumberOfTeaBags();
+        int typeOfTea       = orderSpecification.getTypeOfTea();
+        int qualityOfTea    = orderSpecification.getQualityOfTea();
+        int shapeOfBag      = orderSpecification.getShapeOfBag();
+        int sizeOfBag       = orderSpecification.getSizeOfBag();
+
         return TeaPriceCalc.calculate(numberOfTeaBags, typeOfTea, qualityOfTea, shapeOfBag, sizeOfBag);
     }
 }
