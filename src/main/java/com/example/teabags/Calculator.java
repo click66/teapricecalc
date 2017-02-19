@@ -5,5 +5,5 @@ package com.example.teabags;
  */
 public interface Calculator
 {
-    public double calculate(int numberOfTeaBags, int typeOfTea, int qualityOfTea, int shapeOfBag, int sizeOfBag);
+    public double calculate(OrderSpecification orderSpecification);
 }

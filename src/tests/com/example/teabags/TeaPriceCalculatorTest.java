@@ -37,24 +37,25 @@ public class TeaPriceCalculatorTest
         int qualityOfTea    = 3;
         int shapeOfBag      = 4;
         int sizeOfBag       = 5;
-
-        double calculatedCost = 42;
-
-        Calculator calculator = context.mock(Calculator.class);
-        context.checking(new Expectations() {{
-            oneOf (calculator).calculate(numberOfTeaBags, typeOfTea, qualityOfTea, shapeOfBag, sizeOfBag);
-                will(returnValue(calculatedCost));
-        }});
-
-        TeaPriceCalculator teaPriceCalculator = new TeaPriceCalculator(calculator);
-
-        assertEquals(calculatedCost, teaPriceCalculator.calculate(
+        OrderSpecification orderSpecification = new OrderSpecification(
                 numberOfTeaBags,
                 typeOfTea,
                 qualityOfTea,
                 shapeOfBag,
                 sizeOfBag
-        ), 0);
+        );
+
+        double calculatedCost = 42;
+
+        Calculator calculator = context.mock(Calculator.class);
+        context.checking(new Expectations() {{
+            oneOf (calculator).calculate(orderSpecification);
+                will(returnValue(calculatedCost));
+        }});
+
+        TeaPriceCalculator teaPriceCalculator = new TeaPriceCalculator(calculator);
+
+        assertEquals(calculatedCost, teaPriceCalculator.calculate(orderSpecification), 0);
     }
 
     /**
@@ -75,20 +76,22 @@ public class TeaPriceCalculatorTest
         double calculatedCost = 100010;           // Calculated cost of over 100000
         double expectedCalculatedCost = 98509.85; // Expected calculated cost (100010 - 1.5% = 98509.85)
 
-        Calculator calculator = context.mock(Calculator.class);
-        context.checking(new Expectations() {{
-            oneOf (calculator).calculate(numberOfTeaBags, typeOfTea, qualityOfTea, shapeOfBag, sizeOfBag);
-            will(returnValue(calculatedCost));
-        }});
-
-        TeaPriceCalculator teaPriceCalculator = new TeaPriceCalculator(calculator);
-
-        assertEquals(expectedCalculatedCost, teaPriceCalculator.calculate(
+        OrderSpecification orderSpecification = new OrderSpecification(
                 numberOfTeaBags,
                 typeOfTea,
                 qualityOfTea,
                 shapeOfBag,
                 sizeOfBag
-        ), 0);
+        );
+
+        Calculator calculator = context.mock(Calculator.class);
+        context.checking(new Expectations() {{
+            oneOf (calculator).calculate(orderSpecification);
+            will(returnValue(calculatedCost));
+        }});
+
+        TeaPriceCalculator teaPriceCalculator = new TeaPriceCalculator(calculator);
+
+        assertEquals(expectedCalculatedCost, teaPriceCalculator.calculate(orderSpecification), 0);
     }
 }
