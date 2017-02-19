@@ -13,6 +13,6 @@ public class ReaderFactory
         if (file == null) {
             return new InputReader();
         }
-        return new FileReader(file);
+        return new FileReader(file, new FileTranslator());
     }
 }
